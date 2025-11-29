@@ -19,7 +19,10 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return MaterialApp.router(
-          theme: ThemeData(scaffoldBackgroundColor: kSecondryColor),
+          theme: ThemeData(
+            scaffoldBackgroundColor: kSecondryColor,
+            fontFamily: 'Inter',
+          ),
           debugShowCheckedModeBanner: false,
           routerConfig: AppRouter.router,
         );

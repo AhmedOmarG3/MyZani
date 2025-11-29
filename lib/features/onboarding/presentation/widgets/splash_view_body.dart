@@ -1,7 +1,18 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:myzani/core/app_router.dart';
+
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: const SplashViewBody(),
+    );
+  }
+}
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -12,65 +23,67 @@ class SplashViewBody extends StatefulWidget {
 
 class _SplashViewBodyState extends State<SplashViewBody>
     with SingleTickerProviderStateMixin {
-  late AnimationController animationController;
-  late Animation<double> opacityAnimation;
-  late Animation<Offset> translationAnimation;
+  late final AnimationController _controller;
+  late final Animation<double> _opacityAnimation;
+  late final Animation<Offset> _translationAnimation;
 
   @override
   void initState() {
-    animationController = AnimationController(
+    super.initState();
+
+    _controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
     );
-    opacityAnimation = Tween(begin: 0.0, end: 1.0).animate(animationController);
-    opacityAnimation.addListener(() {
-      setState(() {});
-    });
 
-    translationAnimation = Tween(
-      begin: const Offset(0, -120),
-      end: const Offset(0, 0),
-    ).animate(animationController);
+    _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeIn),
+    );
 
-    translationAnimation.addListener(() {
-      setState(() {});
-    });
-    animationController.forward();
+    _translationAnimation = Tween<Offset>(
+      begin: const Offset(0, -0.2),
+      end: Offset.zero,
+    ).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
+    );
 
-    Future.delayed(const Duration(seconds: 2), () {
-      if (context.mounted) {
+    // عند انتهاء animation، ننتقل للـ Onboarding
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed && context.mounted) {
         context.push(AppRouter.onboarding);
       }
     });
 
-    super.initState();
+    _controller.forward();
   }
 
   @override
   void dispose() {
-    animationController.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Transform.scale(
-      scale: opacityAnimation.value,
-      child: Transform.translate(
-        offset: translationAnimation.value,
-        child: Opacity(
-          opacity: opacityAnimation.value,
-          child: Center(
-            child: Text(
-              'MyZani',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 80,
-                fontWeight: FontWeight.bold,
+    return Center(
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          return Opacity(
+            opacity: _opacityAnimation.value,
+            child: Transform.translate(
+              offset: _translationAnimation.value * 200,
+              child: Text(
+                'MyZani',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 80.sp,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
