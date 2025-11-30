@@ -1,13 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:myzani/core/app_styles.dart';
-import 'package:myzani/core/colors.dart';
-import 'package:myzani/core/widgets/custom_text_button.dart';
-import 'package:myzani/core/widgets/have_account_row.dart';
-import 'package:myzani/features/auth/presentation/widgets/login_app_bar.dart';
-import 'package:myzani/features/auth/presentation/widgets/login_form.dart';
-import 'package:myzani/features/auth/presentation/widgets/login_with_row.dart';
-import 'package:myzani/features/auth/presentation/widgets/or_login_with_text.dart';
+import 'package:myzani/features/auth/presentation/widgets/login_view_body.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -15,62 +7,5 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: LoginViewBody());
-  }
-}
-
-class LoginViewBody extends StatelessWidget {
-  const LoginViewBody({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
-      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-      child: Padding(
-        padding: EdgeInsets.only(top: 60.h, left: 20.w, right: 20.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            LoginAppBar(onPressed: () {}),
-            SizedBox(height: 33.h),
-            Text(
-              'Welcome back! Glad to \n see you, Again!',
-              style: AppStyles.textStyle36Bold.copyWith(fontSize: 30.sp),
-            ),
-            SizedBox(height: 35.h),
-            LoginForm(),
-            SizedBox(height: 15.h),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Text(
-                'Forgot Password ?',
-                style: AppStyles.textStyle14Regular.copyWith(
-                  color: kDrakGreyColor,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-            SizedBox(height: 15.h),
-            CustomTextButton(
-              onPressed: () {},
-              fixedSize: Size(1.sw, 61.h),
-              text: 'Login',
-              borderRedius: 8,
-            ),
-            SizedBox(height: 33.h),
-            OrLoginWithText(),
-            SizedBox(height: 33.h),
-            LoginWithRow(),
-            SizedBox(height: 160.h),
-            HaveAccountRow(
-              onTap: () {},
-              text: "Don’t have an account? ",
-              actionText: 'Register Now',
-            ),
-            SizedBox(height: 40.h),
-          ],
-        ),
-      ),
-    );
   }
 }

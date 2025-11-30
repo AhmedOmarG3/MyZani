@@ -22,6 +22,10 @@ class AppImages {
   /// assets/images/facebook.svg
   static const String imagesFacebook = "assets/images/facebook.svg";
 
+  /// Assets for imagesForgetPassword
+  /// assets/images/forget_password.svg
+  static const String imagesForgetPassword = "assets/images/forget_password.svg";
+
   /// Assets for imagesGoogle
   /// assets/images/google.svg
   static const String imagesGoogle = "assets/images/google.svg";

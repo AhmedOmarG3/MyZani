@@ -52,7 +52,9 @@ class OnBoardingViewBody extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
           CustomTextButton(fixedSize: Size(358.w, 67.h),
-            onPressed: () {},text: "Get Started",),
+            onPressed: () {
+              context.push(AppRouter.signUp);
+            },text: "Get Started",),
           SizedBox(height: 20.h),
           HaveAccountRow(
             text: 'Already Have Account?',

@@ -4,8 +4,8 @@ import 'package:myzani/core/app_styles.dart';
 import 'package:myzani/core/colors.dart';
 
 class OrLoginWithText extends StatelessWidget {
-  const OrLoginWithText({super.key});
-
+  const OrLoginWithText({super.key, required this.text});
+final String text;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -18,7 +18,7 @@ class OrLoginWithText extends StatelessWidget {
           ),
         ),
         Text(
-          'Or Login with',
+          text,
           style: AppStyles.textStyle14Regular.copyWith(
             color: kDrakGreyColor,
             fontWeight: FontWeight.w600,

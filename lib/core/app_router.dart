@@ -1,5 +1,7 @@
 import 'package:go_router/go_router.dart';
+import 'package:myzani/features/auth/presentation/views/forget_password_view.dart';
 import 'package:myzani/features/auth/presentation/views/login_view.dart';
+import 'package:myzani/features/auth/presentation/views/sign_up_view.dart';
 import 'package:myzani/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:myzani/features/onboarding/presentation/views/splash_view.dart';
 
@@ -7,6 +9,8 @@ class AppRouter {
   static final String splash='/';
   static final String onboarding='/onboarding';
   static final String login='/login';
+  static final String signUp='/signUp';
+  static final String forgetPassword='/forgetPassword';
   static final GoRouter router = GoRouter(
     initialLocation:splash ,
     routes: [
@@ -23,6 +27,14 @@ class AppRouter {
 GoRoute(path: login,
         name: login,
         builder: (context, state) => const LoginView(),
+      ),
+      GoRoute(path: signUp,
+        name: signUp,
+        builder: (context, state) => const SignUpView(),
+      ),
+      GoRoute(path: forgetPassword,
+        name: forgetPassword,
+        builder: (context, state) => const ForgetPasswordView(),
       ),
 
     ],
