@@ -2,6 +2,10 @@
 class AppImages {
   AppImages._();
   
+  /// Assets for imagesAppBarShape
+  /// assets/images/app_bar_shape.png
+  static const String imagesAppBarShape = "assets/images/app_bar_shape.png";
+
   /// Assets for imagesBackArrow
   /// assets/images/back_arrow.svg
   static const String imagesBackArrow = "assets/images/back_arrow.svg";
@@ -34,6 +38,14 @@ class AppImages {
   /// assets/images/groub.png
   static const String imagesGroub = "assets/images/groub.png";
 
+  /// Assets for imagesHomesvg
+  /// assets/images/homesvg.svg
+  static const String imagesHomesvg = "assets/images/homesvg.svg";
+
+  /// Assets for imagesInsights
+  /// assets/images/insights.svg
+  static const String imagesInsights = "assets/images/insights.svg";
+
   /// Assets for imagesIphon
   /// assets/images/iphon.svg
   static const String imagesIphon = "assets/images/iphon.svg";
@@ -42,8 +54,20 @@ class AppImages {
   /// assets/images/logo.png
   static const String imagesLogo = "assets/images/logo.png";
 
+  /// Assets for imagesProfile
+  /// assets/images/profile.svg
+  static const String imagesProfile = "assets/images/profile.svg";
+
   /// Assets for imagesSplashShape
   /// assets/images/splash_shape.svg
   static const String imagesSplashShape = "assets/images/splash_shape.svg";
+
+  /// Assets for imagesTransaction
+  /// assets/images/transaction.svg
+  static const String imagesTransaction = "assets/images/transaction.svg";
+
+  /// Assets for imagesYoutube
+  /// assets/images/youtube.png
+  static const String imagesYoutube = "assets/images/youtube.png";
 }
 

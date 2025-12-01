@@ -42,7 +42,9 @@ class LoginViewBody extends StatelessWidget {
             ),
             SizedBox(height: 15.h),
             CustomTextButton(
-              onPressed: () {},
+              onPressed: () {
+                context.push(AppRouter.home);
+              },
               fixedSize: Size(1.sw, 61.h),
               text: 'Login',
               borderRedius: 8,
