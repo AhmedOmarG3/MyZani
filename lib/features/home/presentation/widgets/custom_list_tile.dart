@@ -6,7 +6,6 @@ import 'package:myzani/core/colors.dart';
 
 class CustomListTile extends StatelessWidget {
   const CustomListTile({super.key});
-
   @override
   Widget build(BuildContext context) {
     return ListTile(

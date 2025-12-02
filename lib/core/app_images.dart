@@ -18,6 +18,10 @@ class AppImages {
   /// assets/images/donut.png
   static const String imagesDonut = "assets/images/donut.png";
 
+  /// Assets for imagesDownload
+  /// assets/images/download.svg
+  static const String imagesDownload = "assets/images/download.svg";
+
   /// Assets for imagesEye
   /// assets/images/eye.svg
   static const String imagesEye = "assets/images/eye.svg";

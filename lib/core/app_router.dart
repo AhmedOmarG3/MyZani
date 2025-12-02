@@ -4,6 +4,7 @@ import 'package:myzani/features/auth/presentation/views/login_view.dart';
 import 'package:myzani/features/auth/presentation/views/sign_up_view.dart';
 import 'package:myzani/features/home/presentation/views/home_view.dart';
 import 'package:myzani/features/add_transaction/presentation/views/add_transaction_view.dart';
+import 'package:myzani/features/insights/presentation/views/insights_view.dart';
 import 'package:myzani/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:myzani/features/onboarding/presentation/views/splash_view.dart';
 
@@ -15,6 +16,7 @@ class AppRouter {
   static final String forgetPassword = '/forgetPassword';
   static final String home = '/home';
   static final String addTrasaction = '/addTrasaction';
+  static final String insghts = '/insights';
   static final GoRouter router = GoRouter(
     initialLocation: splash,
     routes: [
@@ -53,6 +55,12 @@ class AppRouter {
         path: addTrasaction,
         name: addTrasaction,
         builder: (context, state) => const AddTransactionView(),
+      ),
+
+      GoRoute(
+        path: insghts,
+        name: insghts,
+        builder: (context, state) => const InsightsView(),
       ),
     ],
   );

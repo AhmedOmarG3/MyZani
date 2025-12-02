@@ -4,7 +4,7 @@ import 'package:myzani/core/app_router.dart';
 import 'package:myzani/features/home/presentation/widgets/custom_bottom_nav_bar.dart';
 import 'package:myzani/features/home/presentation/widgets/custom_floating_action.dart';
 import 'package:myzani/features/home/presentation/widgets/home_view_body.dart';
-import 'package:myzani/features/add_transaction/presentation/views/add_transaction_view.dart';
+import 'package:myzani/features/insights/presentation/views/insights_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -18,7 +18,7 @@ class _HomeViewState extends State<HomeView> {
 
   final pages = [
     HomeViewBody(),
-    Container(color: Colors.blue),
+    InsightsView(),
     Container(color: Colors.yellow),
     Container(color: Colors.orange),
   ];
