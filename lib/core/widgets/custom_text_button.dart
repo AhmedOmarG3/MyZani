@@ -7,12 +7,13 @@ class CustomTextButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.fixedSize,
-    required this.text, this.borderRedius,
+    required this.text, this.borderRedius, this.gradientColors,
   });
   final void Function() onPressed;
   final Size fixedSize;
   final String text;
   final double? borderRedius;
+  final List<Color>? gradientColors ;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +27,7 @@ class CustomTextButton extends StatelessWidget {
           ),
         ],
         gradient: LinearGradient(
-          colors: [Color(0xff69AEA9), Color(0xff3F8782)],
+          colors:gradientColors??[Color(0xff69AEA9), Color(0xff3F8782)],
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
         ),
