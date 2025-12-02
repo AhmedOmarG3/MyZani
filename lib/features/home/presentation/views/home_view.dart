@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:myzani/core/app_router.dart';
 import 'package:myzani/features/home/presentation/widgets/custom_bottom_nav_bar.dart';
-import 'package:myzani/features/home/presentation/widgets/custom_f_a_b.dart';
+import 'package:myzani/features/home/presentation/widgets/custom_floating_action.dart';
 import 'package:myzani/features/home/presentation/widgets/home_view_body.dart';
+import 'package:myzani/features/insights/presentation/views/add_transaction_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -15,7 +18,6 @@ class _HomeViewState extends State<HomeView> {
 
   final pages = [
     HomeViewBody(),
-    Container(color: Colors.green), // page 2
     Container(color: Colors.blue),
     Container(color: Colors.yellow),
     Container(color: Colors.orange),
@@ -27,9 +29,9 @@ class _HomeViewState extends State<HomeView> {
       extendBody: true,
       body: IndexedStack(index: currentIndex, children: pages),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: CustomFAB(
-        onTap: () => setState(() => currentIndex = 2),
-      ),
+      floatingActionButton: currentIndex == 0
+          ? CustomFAB(onTap: () => context.push(AppRouter.addTrasaction))
+          : SizedBox(),
       bottomNavigationBar: CustomBottomNavBar(
         currentIndex: currentIndex,
         onTap: (index) => setState(() => currentIndex = index),

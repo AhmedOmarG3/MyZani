@@ -1,8 +1,7 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_styles.dart';
+import 'package:myzani/core/utils/helpers/get_outline_border.dart';
 
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
@@ -45,15 +44,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
         hintStyle: AppStyles.textStyle15Medium,
       ),
-    );
-  }
-
-  OutlineInputBorder getOutlineInputBorder({
-    Color color = const Color(0xffE8ECF4),
-  }) {
-    return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.r),
-      borderSide: BorderSide(color: color, width: 2.w),
     );
   }
 }

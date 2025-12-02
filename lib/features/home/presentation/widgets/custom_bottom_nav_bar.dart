@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myzani/core/app_images.dart';
 import 'package:myzani/core/colors.dart';
-import 'package:myzani/features/home/presentation/views/home_view.dart';
 import 'package:myzani/features/home/presentation/widgets/nav_item.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
@@ -19,54 +18,88 @@ class CustomBottomNavBar extends StatelessWidget {
     return BottomAppBar(
       color: kSecondryColor,
       shape: CircularNotchedRectangle(),
-      notchMargin: 10,
+      notchMargin: currentIndex == 0 ? 10 : 0,
       shadowColor: Colors.black.withOpacity(0.06),
       child: Container(
         height: 65,
         color: Colors.transparent,
         padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            // Left side
-            Row(
-              children: [
-                NavItem(
-                  icon: AppImages.imagesHomesvg,
-                  index: 0,
-                  currentIndex: currentIndex,
-                  onTap: onTap,
-                ),
-                SizedBox(width: 40),
-                NavItem(
-                  icon: AppImages.imagesInsights,
-                  index: 1,
-                  currentIndex: currentIndex,
-                  onTap: onTap,
-                ),
-              ],
-            ),
+        child: currentIndex == 0
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-            // Right side
-            Row(
-              children: [
-                NavItem(
-                  icon: AppImages.imagesTransaction,
-                  index: 3,
-                  currentIndex: currentIndex,
-                  onTap: onTap,
-                ),
-                SizedBox(width: 40),
-                NavItem(
-                  icon: AppImages.imagesProfile,
-                  index: 4,
-                  currentIndex: currentIndex,
-                  onTap: onTap,
-                ),
-              ],
-            ),
-          ],
-        ),
+                children: [
+                  // Left side
+                  Row(
+                    children: [
+                      NavItem(
+                        icon: AppImages.imagesHomesvg,
+                        index: 0,
+                        currentIndex: currentIndex,
+                        onTap: onTap,
+                      ),
+                      SizedBox(width: 40),
+                      NavItem(
+                        icon: AppImages.imagesInsights,
+                        index: 1,
+                        currentIndex: currentIndex,
+                        onTap: onTap,
+                      ),
+                    ],
+                  ),
+
+                  // Right side
+                  Row(
+                    children: [
+                      NavItem(
+                        icon: AppImages.imagesTransaction,
+                        index: 2,
+                        currentIndex: currentIndex,
+                        onTap: onTap,
+                      ),
+                      SizedBox(width: 40),
+                      NavItem(
+                        icon: AppImages.imagesProfile,
+                        index: 3,
+                        currentIndex: currentIndex,
+                        onTap: onTap,
+                      ),
+                    ],
+                  ),
+                ],
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  NavItem(
+                    icon: AppImages.imagesHomesvg,
+                    index: 0,
+                    currentIndex: currentIndex,
+                    onTap: onTap,
+                  ),
+
+                  NavItem(
+                    icon: AppImages.imagesInsights,
+                    index: 1,
+                    currentIndex: currentIndex,
+                    onTap: onTap,
+                  ),
+
+                  NavItem(
+                    icon: AppImages.imagesTransaction,
+                    index: 2,
+                    currentIndex: currentIndex,
+                    onTap: onTap,
+                  ),
+
+                  NavItem(
+                    icon: AppImages.imagesProfile,
+                    index: 3,
+                    currentIndex: currentIndex,
+                    onTap: onTap,
+                  ),
+                ],
+              ),
       ),
     );
   }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_styles.dart';
 import 'package:myzani/core/colors.dart';
+import 'package:myzani/core/widgets/more_dots_widget.dart';
 
 class TotalBalanceRow extends StatelessWidget {
   const TotalBalanceRow({
@@ -38,17 +39,7 @@ class TotalBalanceRow extends StatelessWidget {
             ),
           ],
         ),
-        GestureDetector(
-          onTap: () {},
-          child: Transform.rotate(
-            angle: math.pi / 2,
-            child: Icon(
-              Icons.more_vert,
-              size: 25.sp,
-              color: Colors.white,
-            ),
-          ),
-        ),
+        MoreDotsWidget(),
       ],
     );
   }
