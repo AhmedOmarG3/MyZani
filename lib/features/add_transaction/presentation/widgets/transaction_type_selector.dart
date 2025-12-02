@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/colors.dart';
-import 'package:myzani/features/insights/presentation/views/add_transaction_view.dart';
+import 'package:myzani/features/add_transaction/presentation/views/add_transaction_view.dart';
 
 class TransactionTypeSelector extends StatelessWidget {
   const TransactionTypeSelector({

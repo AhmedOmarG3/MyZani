@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/colors.dart';
 import 'package:myzani/core/widgets/custom_common_app_bar.dart';
 import 'package:myzani/core/widgets/more_dots_widget.dart';
-import 'package:myzani/features/insights/presentation/widgets/add_transaction_body.dart';
+import 'package:myzani/features/add_transaction/presentation/widgets/add_transaction_body.dart';
 
 
 

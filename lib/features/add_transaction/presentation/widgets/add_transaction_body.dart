@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_images.dart';
 import 'package:myzani/core/colors.dart';
 import 'package:myzani/core/widgets/custom_text_button.dart';
-import 'package:myzani/features/insights/presentation/views/add_transaction_view.dart';
-import 'package:myzani/features/insights/presentation/widgets/category_drop_dwon.dart';
-import 'package:myzani/features/insights/presentation/widgets/custom_add_expenses_text_feild.dart';
-import 'package:myzani/features/insights/presentation/widgets/custom_date_textfield.dart';
-import 'package:myzani/features/insights/presentation/widgets/transaction_type_selector.dart';
+import 'package:myzani/features/add_transaction/presentation/views/add_transaction_view.dart';
+import 'package:myzani/features/add_transaction/presentation/widgets/category_drop_dwon.dart';
+import 'package:myzani/features/add_transaction/presentation/widgets/custom_add_expenses_text_feild.dart';
+import 'package:myzani/features/add_transaction/presentation/widgets/custom_date_textfield.dart';
+import 'package:myzani/features/add_transaction/presentation/widgets/transaction_type_selector.dart';
 
 class AddTransactionBody extends StatelessWidget {
   const AddTransactionBody({
