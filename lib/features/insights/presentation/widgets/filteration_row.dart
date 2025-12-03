@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/features/insights/presentation/widgets/custom_filter_item.dart';
 
 class FiltertionRow extends StatefulWidget {
@@ -18,6 +19,6 @@ class _FiltertionRowState extends State<FiltertionRow> {
   );
   @override
   Widget build(BuildContext context) {
-    return Row(children: List.generate(list.length, generator));
+    return Row(spacing: 5.w, children: List.generate(list.length, generator));
   }
 }

@@ -48,7 +48,7 @@ class OnBoardingViewBody extends StatelessWidget {
           Text(
             'spend smarter \n save more',
             textAlign: TextAlign.center,
-            style: AppStyles.textStyle36BoldWithShadow,
+            style: AppStyles.textStyle36BoldWithShadow(context),
           ),
           SizedBox(height: 20.h),
           CustomTextButton(fixedSize: Size(358.w, 67.h),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myzani/core/app_images.dart';
-import 'package:myzani/core/colors.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 import 'package:myzani/features/home/presentation/widgets/nav_item.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
@@ -15,11 +15,12 @@ class CustomBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     return BottomAppBar(
-      color: kSecondryColor,
+      color: theme.scaffoldBackgroundColor,
       shape: CircularNotchedRectangle(),
       notchMargin: currentIndex == 0 ? 10 : 0,
-      shadowColor: Colors.black.withOpacity(0.06),
+      shadowColor: theme.shadowColor.withOpacity(0.06),
       child: Container(
         height: 65,
         color: Colors.transparent,

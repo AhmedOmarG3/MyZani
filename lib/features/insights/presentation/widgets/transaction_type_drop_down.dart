@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_styles.dart';
-import 'package:myzani/core/colors.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 
 class CustomTransactionTypeDropDown extends StatefulWidget {
   const CustomTransactionTypeDropDown({super.key});
@@ -18,6 +18,7 @@ class _CustomTransactionTypeDropDownState
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     return Padding(
       padding: EdgeInsets.only(right: 20.w),
       child: Container(
@@ -25,7 +26,7 @@ class _CustomTransactionTypeDropDownState
         height: 40.h,
         width: 120.w,
         decoration: BoxDecoration(
-          border: Border.all(color: kGreyColor, width: 1),
+          border: Border.all(color: theme.greyColor, width: 1),
           borderRadius: BorderRadius.circular(8),
         ),
         child: DropdownButtonHideUnderline(
@@ -37,8 +38,8 @@ class _CustomTransactionTypeDropDownState
                 value: type,
                 child: Text(
                   type,
-                  style: AppStyles.textStyle14Regular.copyWith(
-                    color: Color(0xff666666),
+                  style: AppStyles.textStyle14Regular(context).copyWith(
+                    color: theme.textSecondaryColor,
                     fontSize: 15.sp,
                     fontWeight: FontWeight.w600,
                   ),

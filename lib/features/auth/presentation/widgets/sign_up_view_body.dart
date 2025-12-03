@@ -32,7 +32,7 @@ class SignUpViewBody extends StatelessWidget {
             Text(
               'Join us now!We’re glad \n you’re here!',
 
-              style: AppStyles.textStyle36Bold.copyWith(fontSize: 30.sp),
+              style: AppStyles.textStyle36Bold(context).copyWith(fontSize: 30.sp),
             ),
             SizedBox(height: 35.h),
             SignUpForm(),

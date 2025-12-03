@@ -1,7 +1,9 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:myzani/core/colors.dart';
+import 'package:myzani/core/settings/settings_cubit.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 
 class ScrollableLineChart extends StatelessWidget {
   const ScrollableLineChart({super.key});
@@ -24,20 +26,38 @@ class ScrollableLineChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> months = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ];
+    final theme = context.appTheme;
+    final settings = context.watch<SettingsCubit>().state;
+    final isArabic = settings.locale.languageCode == 'ar';
+    final List<String> months = isArabic
+        ? const [
+            'يناير',
+            'فبراير',
+            'مارس',
+            'أبريل',
+            'مايو',
+            'يونيو',
+            'يوليو',
+            'أغسطس',
+            'سبتمبر',
+            'أكتوبر',
+            'نوفمبر',
+            'ديسمبر',
+          ]
+        : const [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec',
+          ];
 
     final originalSpots = [
       FlSpot(0, 300),
@@ -65,6 +85,7 @@ class ScrollableLineChart extends StatelessWidget {
           width: (spots.length - 1) * 50,
           child: LineChart(
             LineChartData(
+              backgroundColor: theme.chartBackgroundColor,
               gridData: FlGridData(show: false),
               borderData: FlBorderData(show: false),
 
@@ -89,9 +110,10 @@ class ScrollableLineChart extends StatelessWidget {
                           padding: const EdgeInsets.only(top: 8),
                           child: Text(
                             months[index],
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 12,
-                              color: Colors.black87,
+                              color: theme.chartMonthLabelColor,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                         );
@@ -107,17 +129,20 @@ class ScrollableLineChart extends StatelessWidget {
                 touchSpotThreshold: double.infinity,
                 enabled: true,
                 touchTooltipData: LineTouchTooltipData(
-                  getTooltipColor: (touchedSpot) => const Color(0xffEBF1F1),
-                  tooltipBorder: BorderSide(color: kPrimaryColor, width: 1.w),
+                  getTooltipColor: (touchedSpot) => theme.chartTooltipColor,
+                  tooltipBorder: BorderSide(
+                    color: theme.primaryColor,
+                    width: 1.w,
+                  ),
                   tooltipBorderRadius: BorderRadius.circular(8.r),
                   fitInsideHorizontally: true,
                   fitInsideVertically: true,
                   getTooltipItems: (spots) {
                     return spots.map((spot) {
                       return LineTooltipItem(
-                        "\$${spot.y.toInt()}",
-                        const TextStyle(
-                          color: kPrimaryColor,
+                        "${settings.currencySymbol}${spot.y.toInt()}",
+                        TextStyle(
+                          color: theme.primaryColor,
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                         ),
@@ -130,7 +155,7 @@ class ScrollableLineChart extends StatelessWidget {
                     final spot = barData.spots[index];
                     return TouchedSpotIndicatorData(
                       FlLine(
-                        color: kGreyColor,
+                        color: theme.greyColor,
                         strokeWidth: 1,
                         dashArray: [10, 7],
                       ),
@@ -145,13 +170,13 @@ class ScrollableLineChart extends StatelessWidget {
                   spots: spots,
                   isCurved: true,
                   barWidth: 3,
-                  color: const Color(0xff2f8f83),
+                  color: theme.chartColor,
                   belowBarData: BarAreaData(
                     show: true,
                     gradient: LinearGradient(
                       colors: [
-                        const Color(0xff2f8f83).withOpacity(0.3),
-                        Colors.transparent,
+                        theme.chartAreaGradientStart.withOpacity(0.3),
+                        theme.chartAreaGradientEnd,
                       ],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,

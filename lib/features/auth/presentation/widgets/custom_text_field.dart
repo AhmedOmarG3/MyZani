@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_styles.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 import 'package:myzani/core/utils/helpers/get_outline_border.dart';
 
 class CustomTextFormField extends StatefulWidget {
@@ -20,11 +21,12 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     return TextFormField(
       obscureText: widget.isPasswordTextField ? isObscure : false,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 20.h),
-        fillColor: Color(0xffF7F8F9),
+        fillColor: theme.inputFillColor,
         filled: true,
         suffixIcon: widget.isPasswordTextField
             ? IconButton(
@@ -38,11 +40,11 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                     : Icon(Icons.visibility),
               )
             : null,
-        focusedBorder: getOutlineInputBorder(),
-        enabledBorder: getOutlineInputBorder(),
+        focusedBorder: getOutlineInputBorder(color: theme.borderColor),
+        enabledBorder: getOutlineInputBorder(color: theme.borderColor),
         hintText: widget.hint,
 
-        hintStyle: AppStyles.textStyle15Medium,
+        hintStyle: AppStyles.textStyle15Medium(context),
       ),
     );
   }

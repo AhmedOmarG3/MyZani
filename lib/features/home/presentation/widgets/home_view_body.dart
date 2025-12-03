@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_styles.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 import 'package:myzani/features/home/presentation/widgets/custom_card.dart';
 import 'package:myzani/features/home/presentation/widgets/custom_home_app_bar_container.dart';
 import 'package:myzani/features/home/presentation/widgets/custom_list_tile.dart';
@@ -31,8 +32,8 @@ class HomeViewBody extends StatelessWidget {
             sliver: SliverToBoxAdapter(
               child: Text(
                 'Expense History',
-                style: AppStyles.textStyle20SemiBold.copyWith(
-                  color: Color(0XFF222222),
+                style: AppStyles.textStyle20SemiBold(context).copyWith(
+                  color: context.appTheme.textPrimaryColor,
                 ),
               ),
             ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_styles.dart';
-import 'package:myzani/core/colors.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 
 class HaveAccountRow extends StatelessWidget {
   const HaveAccountRow({
@@ -15,6 +15,7 @@ class HaveAccountRow extends StatelessWidget {
   final String actionText;
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     return GestureDetector(
       onTap: onTap,
       child: Row(
@@ -22,12 +23,12 @@ class HaveAccountRow extends StatelessWidget {
         children: [
           Text(
             text,
-            style: AppStyles.textStyle14Regular.copyWith(fontSize: 15.sp),
+            style: AppStyles.textStyle14Regular(context).copyWith(fontSize: 15.sp),
           ),
           Text(
             actionText,
-            style: AppStyles.textStyle14Regular.copyWith(
-              color: kPrimaryColor,
+            style: AppStyles.textStyle14Regular(context).copyWith(
+              color: theme.primaryColor,
               fontSize: 15.sp,
             ),
           ),

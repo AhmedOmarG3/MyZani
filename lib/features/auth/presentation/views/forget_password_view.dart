@@ -36,7 +36,7 @@ class ForgetPasswordViewBody extends StatelessWidget {
             SizedBox(height: 50.h),
             Text(
               "Enter your email and we’ll \nsend you a reset link.",
-              style: AppStyles.textStyle36Bold.copyWith(fontSize: 30.sp),
+              style: AppStyles.textStyle36Bold(context).copyWith(fontSize: 30.sp),
             ),
             SizedBox(height: 20.h),
             SvgPicture.asset(AppImages.imagesForgetPassword, height: 200.h),
@@ -85,7 +85,7 @@ class ForgetPasswordAppBar extends StatelessWidget {
         ),
         Text(
           'Forgot Password',
-          style: AppStyles.textStyle36Bold.copyWith(fontSize: 25.sp),
+          style: AppStyles.textStyle36Bold(context).copyWith(fontSize: 25.sp),
         ),
       ],
     );

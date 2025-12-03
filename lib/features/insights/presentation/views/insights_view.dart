@@ -19,11 +19,12 @@ class InsightsView extends StatelessWidget {
             InsightsAppBar(),
             SizedBox(height: 30.h),
             FiltertionRow(),
-            SizedBox(height: 30),
+            SizedBox(height: 20),
             Align(
               alignment: Alignment.centerRight,
               child: CustomTransactionTypeDropDown(),
             ),
+            SizedBox(height: 10.h),
             ScrollableLineChart(),
             SizedBox(height: 30.h),
             TopTransactions(),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myzani/core/colors.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 
 class CustomFAB extends StatelessWidget {
   final VoidCallback onTap;
@@ -8,15 +8,16 @@ class CustomFAB extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     return Container(
       width: 70,
       height: 70,
       decoration: BoxDecoration(
-        color: kPrimaryColor,
+        color: theme.primaryColor,
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.25),
+            color: theme.shadowColor.withOpacity(0.25),
             blurRadius: 4,
             offset: Offset(0, 4),
           ),
@@ -27,7 +28,7 @@ class CustomFAB extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
         shape: CircleBorder(),
-        child: Icon(Icons.add, size: 30, color: Colors.white),
+        child: Icon(Icons.add, size: 30, color: theme.onPrimaryColor),
       ),
     );
   }

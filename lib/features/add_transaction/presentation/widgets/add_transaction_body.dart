@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_images.dart';
-import 'package:myzani/core/colors.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 import 'package:myzani/core/widgets/custom_text_button.dart';
 import 'package:myzani/features/add_transaction/presentation/views/add_transaction_view.dart';
 import 'package:myzani/features/add_transaction/presentation/widgets/category_drop_dwon.dart';
-import 'package:myzani/features/add_transaction/presentation/widgets/custom_add_expenses_text_feild.dart';
+import 'package:myzani/features/add_transaction/presentation/widgets/custom_add_transaction_text_feild.dart';
 import 'package:myzani/features/add_transaction/presentation/widgets/custom_date_textfield.dart';
 import 'package:myzani/features/add_transaction/presentation/widgets/transaction_type_selector.dart';
 
@@ -23,16 +23,17 @@ class AddTransactionBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     return Material(
       borderRadius: BorderRadius.circular(20.r),
       child: Container(
         padding: EdgeInsets.all(20.w),
         decoration: BoxDecoration(
-          color: kSecondryColor,
+          color: Colors.transparent,
           borderRadius: BorderRadius.circular(20.r),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.4),
+              color: theme.shadowColor,
               blurRadius: 25,
               offset: const Offset(0, 15),
             ),

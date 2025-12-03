@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_styles.dart';
-import 'package:myzani/core/colors.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 import 'package:myzani/features/transaction_management/presentation/widgets/action_row.dart';
 import 'package:myzani/features/transaction_management/presentation/widgets/information_row.dart';
 import 'package:myzani/features/transaction_management/presentation/widgets/transaction_details_row.dart';
@@ -16,7 +16,7 @@ class TransactionDetailsContainer extends StatelessWidget {
       width: 1.sw,
 
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.appTheme.scaffoldBackgroundColor,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(50.r),
           topRight: Radius.circular(50.r),
@@ -36,39 +36,43 @@ class TransactionDetailsContainer extends StatelessWidget {
                 InformationRow(
                   title: 'Status',
                   value: 'Income',
-                  titleColor: Color(0xff666666),
-                  valueColor: kPrimaryColor,
+                  titleColor: context.appTheme.textSecondaryColor,
+                  valueColor: context.appTheme.primaryColor,
                 ),
                 InformationRow(
                   title: 'Category',
                   value: 'Food',
-                  titleColor: Color(0xff666666),
-                  valueColor: Colors.black,
+                  titleColor: context.appTheme.textSecondaryColor,
+                  valueColor: context.appTheme.textPrimaryColor,
                 ),
                 InformationRow(
                   title: 'Date',
                   value: 'Feb 30, 2022',
-                  titleColor: Color(0xff666666),
-                  valueColor: Colors.black,
+                  titleColor: context.appTheme.textSecondaryColor,
+                  valueColor: context.appTheme.textPrimaryColor,
                 ),
                 InformationRow(
                   title: 'Time',
                   value: '10:00 AM',
-                  titleColor: Color(0xff666666),
-                  valueColor: Colors.black,
+                  titleColor: context.appTheme.textSecondaryColor,
+                  valueColor: context.appTheme.textPrimaryColor,
                 ),
               ],
             ),
             SizedBox(height: 10.h),
-            Divider(color: kGreyColor, thickness: 1.w),
+            Divider(color: context.appTheme.greyColor, thickness: 1.w),
             Column(
               children: [
-                Text('Description', style: AppStyles.textStyle20SemiBold),
+                Text(
+                  'Description',
+                  style: AppStyles.textStyle20SemiBold(context),
+                ),
                 SizedBox(height: 15.h),
                 Container(
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Color(0xff438883).withOpacity(0.1),
+                    color: context.appTheme.descriptionBackgroundColor
+                        .withOpacity(0.1),
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(10.r),
                       bottomLeft: Radius.circular(10.r),
@@ -76,17 +80,17 @@ class TransactionDetailsContainer extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    maxLines: 3,
+                    maxLines: 2,
                     'Food delivery from Amazon, 3 items, 1 quantity, 3.00 USD',
-                    style: AppStyles.textStyle18SemiBold.copyWith(
-                      color: kPrimaryColor,
-                    ),
+                    style: AppStyles.textStyle18SemiBold(
+                      context,
+                    ).copyWith(color: context.appTheme.textPrimaryColor),
                   ),
                 ),
               ],
             ),
             SizedBox(height: 10.h),
-            Divider(color: kGreyColor, thickness: 1.w),
+            Divider(color: context.appTheme.greyColor, thickness: 1.w),
             SizedBox(height: 10),
             ActionRow(),
           ],

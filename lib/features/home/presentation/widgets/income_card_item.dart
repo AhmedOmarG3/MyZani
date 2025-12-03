@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_styles.dart';
-import 'package:myzani/core/colors.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 
 class IncomeCardItem extends StatelessWidget {
   const IncomeCardItem({
@@ -15,6 +15,7 @@ class IncomeCardItem extends StatelessWidget {
   final String amount;
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -26,16 +27,16 @@ class IncomeCardItem extends StatelessWidget {
               height: 24.h,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: kSecondryColor.withOpacity(.15),
+                color: theme.secondaryColor.withOpacity(.15),
               ),
               child: Center(
-                child: Icon(icon, color: kSecondryColor, size: 18.sp),
+                child: Icon(icon, color: theme.secondaryColor, size: 18.sp),
               ),
             ),
             Text(
               title,
-              style: AppStyles.textStyle15Medium.copyWith(
-                color: Color(0xffD0E5E4),
+              style: AppStyles.textStyle15Medium(context).copyWith(
+                color: theme.incomeCardBackgroundColor,
                 fontSize: 18.sp,
               ),
             ),
@@ -43,7 +44,7 @@ class IncomeCardItem extends StatelessWidget {
         ),
         Text(
           amount,
-          style: AppStyles.textStyle20SemiBold.copyWith(color: kSecondryColor),
+          style: AppStyles.textStyle20SemiBold(context).copyWith(color: theme.secondaryColor),
         ),
       ],
     );

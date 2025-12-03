@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_styles.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 
 class CustomTextButton extends StatelessWidget {
   const CustomTextButton({
@@ -16,18 +17,19 @@ class CustomTextButton extends StatelessWidget {
   final List<Color>? gradientColors ;
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     return Container(
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.25),
+            color: theme.shadowColor.withOpacity(0.25),
             spreadRadius: 0,
             blurRadius: 4,
             offset: const Offset(0, 9),
           ),
         ],
         gradient: LinearGradient(
-          colors:gradientColors??[Color(0xff69AEA9), Color(0xff3F8782)],
+          colors:gradientColors?? theme.buttonGradientColors,
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
         ),
@@ -45,7 +47,7 @@ class CustomTextButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(borderRedius ?? 40.r),
           ),
         ),
-        child: Center(child: Text(text, style: AppStyles.textStyle18SemiBold)),
+        child: Center(child: Text(text, style: AppStyles.textStyle18SemiBold(context))),
       ),
     );
   }

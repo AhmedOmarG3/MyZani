@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_styles.dart';
-import 'package:myzani/core/colors.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 
 class CustomFilterItem extends StatelessWidget {
   const CustomFilterItem({
@@ -15,6 +15,7 @@ class CustomFilterItem extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(10.r),
@@ -24,14 +25,14 @@ class CustomFilterItem extends StatelessWidget {
         width: 90.w,
         height: 40.h,
         decoration: BoxDecoration(
-          color: isSelected ? kPrimaryColor : kSecondryColor,
+          color: isSelected ? theme.primaryColor : Colors.transparent,
           borderRadius: BorderRadius.circular(10.r),
         ),
         child: Center(
           child: Text(
             title,
-            style: AppStyles.textStyle14Regular.copyWith(
-              color: isSelected ? kSecondryColor : kGreyColor,
+            style: AppStyles.textStyle14Regular(context).copyWith(
+              color: isSelected ? theme.secondaryColor : theme.greyColor,
             ),
           ),
         ),

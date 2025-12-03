@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 import 'package:myzani/core/widgets/custom_text_button.dart';
 
 class ActionRow extends StatelessWidget {
@@ -7,6 +8,7 @@ class ActionRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     return Row(
       spacing: 20.w,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -21,7 +23,7 @@ class ActionRow extends StatelessWidget {
           onPressed: () {},
           fixedSize: Size(140.w, 20),
           text: 'Delete',
-          gradientColors: [Color(0xffFF6B6B), Color(0xffC62828)],
+          gradientColors: theme.expenseGradientColors,
           borderRedius: 8,
         ),
       ],

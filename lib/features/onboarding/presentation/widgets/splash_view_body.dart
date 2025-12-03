@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:myzani/core/app_router.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -76,7 +77,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
               child: Text(
                 'MyZani',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: context.appTheme.onPrimaryColor,
                   fontSize: 80.sp,
                   fontWeight: FontWeight.bold,
                 ),

@@ -19,7 +19,7 @@ class InformationRow extends StatelessWidget {
       children: [
         Text(
           title,
-          style: AppStyles.textStyle15Medium.copyWith(
+          style: AppStyles.textStyle15Medium(context).copyWith(
             color: titleColor,
             fontSize: 16.sp,
             fontWeight: FontWeight.bold,
@@ -27,7 +27,7 @@ class InformationRow extends StatelessWidget {
         ),
         Text(
           value,
-          style: AppStyles.textStyle15Medium.copyWith(
+          style: AppStyles.textStyle15Medium(context).copyWith(
             color: valueColor,
             fontSize: 16.sp,
             fontWeight: FontWeight.bold,

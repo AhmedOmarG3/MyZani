@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_images.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 
 class AppBarContainer extends StatelessWidget {
   const AppBarContainer({
@@ -12,6 +13,7 @@ class AppBarContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     return Container(
       height: 1.sh * .35,
       width: 1.sw,
@@ -19,7 +21,7 @@ class AppBarContainer extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Color(0xff2A7C76), Color(0xff429690)],
+          colors: theme.appBarGradientColors,
         ),
     
         image: DecorationImage(

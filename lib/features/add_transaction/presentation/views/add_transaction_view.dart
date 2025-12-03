@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:myzani/core/colors.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 import 'package:myzani/core/widgets/custom_common_app_bar.dart';
 import 'package:myzani/core/widgets/more_dots_widget.dart';
 import 'package:myzani/features/add_transaction/presentation/widgets/add_transaction_body.dart';
-
-
 
 class AddTransactionView extends StatelessWidget {
   const AddTransactionView({super.key});
@@ -15,7 +13,9 @@ class AddTransactionView extends StatelessWidget {
     return Scaffold(body: AddTransactionViewBody());
   }
 }
+
 enum TransactionType { expense, income }
+
 class AddTransactionViewBody extends StatefulWidget {
   const AddTransactionViewBody({super.key});
 
@@ -28,14 +28,15 @@ class _AddTransactionViewState extends State<AddTransactionViewBody> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     Color mainColor = selectedType == TransactionType.expense
-        ? Colors.red
-        : const Color.fromARGB(255, 53, 125, 120);
+        ? theme.expenseColor
+        : theme.incomeColor;
 
     return Stack(
       fit: StackFit.expand,
       children: [
-        Container(color: kSecondryColor),
+        Container(color: Colors.transparent),
         Positioned(
           top: 0,
           left: 0,
@@ -66,4 +67,3 @@ class _AddTransactionViewState extends State<AddTransactionViewBody> {
     );
   }
 }
-

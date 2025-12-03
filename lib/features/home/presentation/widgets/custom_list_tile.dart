@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_images.dart';
 import 'package:myzani/core/app_styles.dart';
-import 'package:myzani/core/colors.dart';
+import 'package:myzani/core/settings/settings_cubit.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 
 class CustomListTile extends StatelessWidget {
   const CustomListTile({super.key});
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
+    final currencySymbol = context.watch<SettingsCubit>().state.currencySymbol;
     return ListTile(
       contentPadding: EdgeInsets.zero,
       leading: Container(
@@ -15,28 +19,30 @@ class CustomListTile extends StatelessWidget {
         height: 50.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.r),
-          color: Color(0xffF0F6F5),
+          color: theme.listTileBackgroundColor,
         ),
         child: Center(child: Image.asset(AppImages.imagesYoutube)),
       ),
       title: Text(
         'Youtube',
-        style: AppStyles.textStyle15Medium.copyWith(
+        style: AppStyles.textStyle15Medium(context).copyWith(
           fontSize: 16.sp,
           fontWeight: FontWeight.bold,
-          color: Color(0XFF000000),
+          color: theme.textPrimaryColor,
         ),
       ),
       subtitle: Text(
         'Jan 16, 2022',
-        style: AppStyles.textStyle14Regular.copyWith(color: kGreyColor),
+        style: AppStyles.textStyle14Regular(
+          context,
+        ).copyWith(color: theme.greyColor),
       ),
       trailing: Text(
-        '+\$850.00',
-        style: AppStyles.textStyle15Medium.copyWith(
+        '+$currencySymbol 850.00',
+        style: AppStyles.textStyle15Medium(context).copyWith(
           fontSize: 16.sp,
           fontWeight: FontWeight.bold,
-          color: Color(0XFF25A969),
+          color: const Color(0XFF25A969),
         ),
       ),
     );

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:myzani/core/app_router.dart';
 import 'package:myzani/core/app_styles.dart';
-import 'package:myzani/core/colors.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 import 'package:myzani/core/widgets/custom_text_button.dart';
 import 'package:myzani/core/widgets/have_account_row.dart';
 import 'package:myzani/features/auth/presentation/widgets/login_app_bar.dart';
@@ -30,7 +30,7 @@ class LoginViewBody extends StatelessWidget {
             SizedBox(height: 33.h),
             Text(
               'Welcome back! Glad to \n see you, Again!',
-              style: AppStyles.textStyle36Bold.copyWith(fontSize: 30.sp),
+              style: AppStyles.textStyle36Bold(context).copyWith(fontSize: 30.sp),
             ),
             SizedBox(height: 35.h),
             LoginForm(),
@@ -84,8 +84,8 @@ final void Function() onTap;
         onTap: onTap,
         child: Text(
           'Forgot Password ?',
-          style: AppStyles.textStyle14Regular.copyWith(
-            color: kDrakGreyColor,
+          style: AppStyles.textStyle14Regular(context).copyWith(
+            color: context.appTheme.darkGreyColor,
             fontWeight: FontWeight.w600,
           ),
         ),

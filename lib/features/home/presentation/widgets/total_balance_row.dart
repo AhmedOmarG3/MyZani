@@ -2,7 +2,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_styles.dart';
-import 'package:myzani/core/colors.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 import 'package:myzani/core/widgets/more_dots_widget.dart';
 
 class TotalBalanceRow extends StatelessWidget {
@@ -12,6 +12,7 @@ class TotalBalanceRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -20,8 +21,8 @@ class TotalBalanceRow extends StatelessWidget {
           children: [
             Text(
               'Total Balance',
-              style: AppStyles.textStyle15Medium.copyWith(
-                color: kSecondryColor,
+              style: AppStyles.textStyle15Medium(context).copyWith(
+                color: theme.secondaryColor,
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w600,
               ),
@@ -32,7 +33,7 @@ class TotalBalanceRow extends StatelessWidget {
                 angle: math.pi / 2,
                 child: Icon(
                   Icons.arrow_back_ios,
-                  color: kSecondryColor,
+                  color: theme.secondaryColor,
                   size: 15.sp,
                 ),
               ),

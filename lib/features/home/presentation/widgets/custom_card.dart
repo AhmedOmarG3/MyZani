@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_styles.dart';
-import 'package:myzani/core/colors.dart';
+import 'package:myzani/core/settings/settings_cubit.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 import 'package:myzani/features/home/presentation/widgets/income_card_item.dart';
 import 'package:myzani/features/home/presentation/widgets/total_balance_row.dart';
 
@@ -10,6 +12,8 @@ class CustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
+    final currencySymbol = context.watch<SettingsCubit>().state.currencySymbol;
     return Material(
       elevation: 20,
       borderRadius: BorderRadius.circular(20.r),
@@ -20,13 +24,13 @@ class CustomCard extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.25),
+              color: theme.shadowColor.withOpacity(0.25),
               spreadRadius: 0,
               blurRadius: 4,
               offset: const Offset(0, 4),
             ),
           ],
-          color: Color(0xff2F7E79),
+          color: theme.cardPrimaryColor,
           borderRadius: BorderRadius.circular(20.r),
         ),
         child: Padding(
@@ -42,11 +46,10 @@ class CustomCard extends StatelessWidget {
               TotalBalanceRow(),
               SizedBox(height: 10.h),
               Text(
-                '\$ 2,548.00',
-                style: AppStyles.textStyle36Bold.copyWith(
-                  color: kSecondryColor,
-                  fontSize: 30.sp,
-                ),
+                '$currencySymbol 2,548.00',
+                style: AppStyles.textStyle36Bold(
+                  context,
+                ).copyWith(color: theme.secondaryColor, fontSize: 30.sp),
               ),
               SizedBox(height: 40.h),
               Row(
@@ -55,12 +58,12 @@ class CustomCard extends StatelessWidget {
                   IncomeCardItem(
                     icon: Icons.arrow_downward_rounded,
 
-                    amount: '\$ 1,840.00',
+                    amount: '$currencySymbol 1,840.00',
                     title: 'Income',
                   ),
                   IncomeCardItem(
                     icon: Icons.arrow_upward_rounded,
-                    amount: '\$ 2,548.00',
+                    amount: '$currencySymbol 2,548.00',
                     title: 'Expense',
                   ),
                 ],

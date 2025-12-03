@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:myzani/core/colors.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 import 'package:myzani/features/add_transaction/presentation/views/add_transaction_view.dart';
 
 class TransactionTypeSelector extends StatelessWidget {
@@ -15,6 +15,7 @@ class TransactionTypeSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -22,12 +23,12 @@ class TransactionTypeSelector extends StatelessWidget {
           label: const Text("Expense"),
           labelStyle: TextStyle(
             color: selectedType == TransactionType.expense
-                ? kSecondryColor
-                : Colors.black,
+                ? theme.secondaryColor
+                : theme.textPrimaryColor,
           ),
-          checkmarkColor: kSecondryColor,
+          checkmarkColor: theme.secondaryColor,
           selected: selectedType == TransactionType.expense,
-          selectedColor: Colors.red,
+          selectedColor: theme.expenseColor,
           onSelected: (val) {
             onChanged(TransactionType.expense);
           },
@@ -37,12 +38,12 @@ class TransactionTypeSelector extends StatelessWidget {
           label: const Text("Income"),
           labelStyle: TextStyle(
             color: selectedType == TransactionType.income
-                ? kSecondryColor
-                : Colors.black,
+                ? theme.secondaryColor
+                : theme.textPrimaryColor,
           ),
-          checkmarkColor: kSecondryColor,
+          checkmarkColor: theme.secondaryColor,
           selected: selectedType == TransactionType.income,
-          selectedColor: const Color.fromARGB(255, 53, 125, 120),
+          selectedColor: theme.incomeColor,
           onSelected: (val) {
             onChanged(TransactionType.income);
           },

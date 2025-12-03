@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_styles.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 
 class CategoryItem {
   final String name;
@@ -47,6 +48,7 @@ class _CategoryDropdownState extends State<CategoryDropdown> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -54,8 +56,8 @@ class _CategoryDropdownState extends State<CategoryDropdown> {
           padding: EdgeInsets.only(bottom: 5.h, left: 10.w),
           child: Text(
             'Category',
-            style: AppStyles.textStyle14Regular.copyWith(
-              color: const Color(0xff666666),
+            style: AppStyles.textStyle14Regular(context).copyWith(
+              color: theme.textSecondaryColor,
             ),
           ),
         ),
@@ -68,11 +70,11 @@ class _CategoryDropdownState extends State<CategoryDropdown> {
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15.r),
-              borderSide: const BorderSide(color: Color(0xffDDDDDD)),
+              borderSide: BorderSide(color: theme.borderLightColor),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15.r),
-              borderSide: const BorderSide(color: Colors.blue),
+              borderSide: BorderSide(color: theme.primaryColor),
             ),
           ),
           items: widget.categories.map((category) {

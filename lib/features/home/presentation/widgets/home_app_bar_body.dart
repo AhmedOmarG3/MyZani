@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_styles.dart';
-import 'package:myzani/core/colors.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 
 class HomeAppBarBody extends StatelessWidget {
   const HomeAppBarBody({super.key});
@@ -18,16 +18,16 @@ class HomeAppBarBody extends StatelessWidget {
             children: [
               Text(
                 'Hello,',
-                style: AppStyles.textStyle14Regular.copyWith(
+                style: AppStyles.textStyle14Regular(context).copyWith(
                   fontSize: 20.sp,
-                  color: kSecondryColor,
+                  color: context.appTheme.secondaryColor,
                 ),
               ),
               Text(
                 'Ahmed Omar',
-                style: AppStyles.textStyle20SemiBold.copyWith(
+                style: AppStyles.textStyle20SemiBold(context).copyWith(
                   fontSize: 30.sp,
-                  color: kSecondryColor,
+                  color: context.appTheme.secondaryColor,
                 ),
               ),
             ],

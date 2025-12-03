@@ -5,6 +5,7 @@ import 'package:myzani/features/home/presentation/widgets/custom_bottom_nav_bar.
 import 'package:myzani/features/home/presentation/widgets/custom_floating_action.dart';
 import 'package:myzani/features/home/presentation/widgets/home_view_body.dart';
 import 'package:myzani/features/insights/presentation/views/insights_view.dart';
+import 'package:myzani/features/profile/presentation/views/profile_view.dart';
 import 'package:myzani/features/transaction_management/presentation/views/transaction_details_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -21,7 +22,7 @@ class _HomeViewState extends State<HomeView> {
     HomeViewBody(),
     InsightsView(),
     TransactionDetailsView(),
-    Container(color: Colors.orange),
+    ProfileView(),
   ];
 
   @override

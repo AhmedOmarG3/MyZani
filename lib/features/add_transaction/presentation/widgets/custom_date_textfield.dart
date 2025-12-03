@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_styles.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 import 'package:myzani/core/utils/helpers/get_outline_border.dart';
 
 class CustomDateTextField extends StatefulWidget {
@@ -36,6 +37,7 @@ class _CustomDateTextFieldState extends State<CustomDateTextField> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -43,8 +45,8 @@ class _CustomDateTextFieldState extends State<CustomDateTextField> {
           padding: EdgeInsets.only(bottom: 5.h, left: 10.w),
           child: Text(
             widget.title,
-            style: AppStyles.textStyle14Regular.copyWith(
-              color: const Color(0xff666666),
+            style: AppStyles.textStyle14Regular(context).copyWith(
+              color: theme.textSecondaryColor,
             ),
           ),
         ),
@@ -56,15 +58,18 @@ class _CustomDateTextFieldState extends State<CustomDateTextField> {
             suffixIcon: const Icon(Icons.calendar_month),
             border: getOutlineInputBorder(
               borderRedius: 15.r,
-              color: const Color(0xffDDDDDD),
+              color: theme.borderLightColor,
+              context: context,
             ),
             focusedBorder: getOutlineInputBorder(
               borderRedius: 15.r,
               color: widget.focusColor,
+              context: context,
             ),
             enabledBorder: getOutlineInputBorder(
               borderRedius: 15.r,
-              color: const Color(0xffDDDDDD),
+              color: theme.borderLightColor,
+              context: context,
             ),
           ),
         ),

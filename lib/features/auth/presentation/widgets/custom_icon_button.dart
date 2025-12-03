@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 
 class CustomIconButton extends StatelessWidget {
   const CustomIconButton({
@@ -17,11 +18,12 @@ class CustomIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     return IconButton(
       style: ButtonStyle(
         fixedSize: WidgetStateProperty.all(size),
         side: WidgetStateProperty.all(
-          BorderSide(color: Color(0xffE8ECF4), width: 2.w),
+          BorderSide(color: theme.borderColor, width: 2.w),
         ),
         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:myzani/core/colors.dart';
+import 'package:myzani/core/theme/app_theme.dart';
 
 class NavItem extends StatelessWidget {
   final String icon;
@@ -18,13 +18,14 @@ class NavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.appTheme;
     final isSelected = currentIndex == index;
 
     return GestureDetector(
       onTap: () => onTap(index),
       child: SvgPicture.asset(
         icon,
-        color: isSelected ? kPrimaryColor : Color(0xffAAAAAA),
+        color: isSelected ? theme.primaryColor : theme.greyColor,
       ),
     );
   }
