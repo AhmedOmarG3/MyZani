@@ -63,7 +63,7 @@ class HomeViewBody extends StatelessWidget {
                               onTap: () {
                                 context
                                     .read<GetTransactionCubit>()
-                                    .getTransaction(index);
+                                    .getTransaction(state.transactions[index].id);
                                 context.read<HomeCubit>().changePage(2);
                               },
                               transactionEntity: state.transactions[index],

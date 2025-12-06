@@ -14,12 +14,12 @@ import 'package:myzani/features/transactions_management/data/models/transaction_
 import 'package:myzani/features/transactions_management/data/models/transaction_type_model.dart';
 import 'package:myzani/features/transactions_management/domain/repositories/transactios_managment_repo.dart';
 import 'package:myzani/features/transactions_management/presentation/blocs/add_transaction/add_transaction_cubit.dart';
+import 'package:myzani/features/transactions_management/presentation/blocs/delete_transaction/delete_transaction_cubit.dart';
 import 'package:myzani/features/transactions_management/presentation/blocs/get_transaction/get_transaction_cubit.dart';
 
-
-void main() async{
-   WidgetsFlutterBinding.ensureInitialized(); 
-    await Hive.initFlutter();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
   Hive.registerAdapter(CategoryModelAdapter());
   Hive.registerAdapter(TransactionTypeModelAdapter());
   Hive.registerAdapter(TransactionModelAdapter());
@@ -42,12 +42,20 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => ThemeCubit()),
         BlocProvider(create: (context) => SettingsCubit()),
-         BlocProvider(create: (_) => sl<AddTransactionCubit>()),
-         BlocProvider(
-      create: (context) => HomeCubit(sl<ManageTranasactionsRepo>())..loadHomeData()),
-      BlocProvider(
-      create: (context) => GetTransactionCubit(sl<ManageTranasactionsRepo>())),
-      
+        BlocProvider(create: (_) => sl<AddTransactionCubit>()),
+        BlocProvider(
+          create: (context) =>
+              HomeCubit(sl<ManageTranasactionsRepo>())..loadHomeData(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              GetTransactionCubit(sl<ManageTranasactionsRepo>()),
+        ),
+        BlocProvider(
+          create: (context) => DeleteTransactionCubit(
+            manageTranasactionsRepo: sl<ManageTranasactionsRepo>(),
+          ),
+        ),
       ],
       child: ScreenUtilInit(
         designSize: const Size(420, 890),
@@ -61,10 +69,10 @@ class MyApp extends StatelessWidget {
                 builder: (context, themeMode) {
                   return MaterialApp.router(
                     localizationsDelegates: [
-  GlobalMaterialLocalizations.delegate,
-  GlobalWidgetsLocalizations.delegate,
-  GlobalCupertinoLocalizations.delegate,
-],
+                      GlobalMaterialLocalizations.delegate,
+                      GlobalWidgetsLocalizations.delegate,
+                      GlobalCupertinoLocalizations.delegate,
+                    ],
                     locale: settingsState.locale,
                     supportedLocales: const [Locale('en'), Locale('ar')],
                     builder: (context, appChild) {

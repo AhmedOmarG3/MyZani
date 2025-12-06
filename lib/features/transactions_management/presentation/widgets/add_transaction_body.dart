@@ -19,11 +19,13 @@ import 'package:myzani/features/transactions_management/presentation/widgets/tra
 class AddTransactionBody extends StatefulWidget {
   const AddTransactionBody({
     super.key,
+     this.transactionEntity,
     required this.mainColor,
     required this.selectedType,
     required this.onTypeChanged,
   });
 
+  final TransactionEntity? transactionEntity;
   final Color mainColor;
   final TransactionType selectedType;
   final ValueChanged<TransactionType> onTypeChanged;
@@ -85,6 +87,14 @@ class _AddTransactionBodyState extends State<AddTransactionBody> {
     amountController = TextEditingController();
     dateController = TextEditingController();
     descriptionController = TextEditingController();
+    if (widget.transactionEntity != null) {
+  final t = widget.transactionEntity!;
+  titleController.text = t.title;
+  amountController.text = t.amount.toString();
+  descriptionController.text = t.description;
+  dateController.text = DateFormat('yyyy-MM-dd HH:mm').format(t.date);
+  categoryItem = t.category;
+}
   }
 
   @override
@@ -138,42 +148,45 @@ class _AddTransactionBodyState extends State<AddTransactionBody> {
               SizedBox(height: 20.h),
               CustomTextButton(
                 fixedSize: Size(1.sw, 61.h),
-                text: widget.selectedType == TransactionType.expense
+                text: widget.transactionEntity == null?
+                 widget.selectedType == TransactionType.expense
                     ? "Add Expense"
-                    : "Add Income",
+                    : "Add Income": "Edit Transaction",
                 borderRedius: 20.r,
-                onPressed: () {
-                  if (!formKey.currentState!.validate()) {
-                    return;
-                  }
+                 onPressed: ()  {
+  if (!formKey.currentState!.validate()) return;
 
-                  if (categoryItem == null) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text("Please select a category")),
-                    );
-                    return;
-                  }
+  if (categoryItem == null) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text("Please select a category")),
+    );
+    return;
+  }
 
-                  final amount = double.parse(amountController.text);
+  final amount = double.parse(amountController.text);
+  final date = DateFormat('yyyy-MM-dd HH:mm').parseStrict(dateController.text);
 
-                  final date = DateFormat(
-                    'yyyy-MM-dd HH:mm',
-                  ).parseStrict(dateController.text);
+  final transaction = TransactionEntity(
+    id: widget.transactionEntity?.id ??  context.read<AddTransactionCubit>().autotransactionIdIncrement(),
+    title: titleController.text,
+    description: descriptionController.text,
+    category: categoryItem!,
+    amount: amount,
+    date: date,
+    type: widget.selectedType,
+  );
 
-                  final transaction = TransactionEntity(
-                    title: titleController.text,
-                    description: descriptionController.text,
-                    category: categoryItem!,
-                    amount: amount,
-                    date: date,
-                    type: widget.selectedType,
-                  );
+  if (widget.transactionEntity == null) {
+    context.read<AddTransactionCubit>().addTransaction(transactionEntity: transaction);
+  } else {
+    context.read<AddTransactionCubit>().editTransaction(transactionEntity: transaction);
+  }
 
-                  context.read<AddTransactionCubit>().addTransaction(
-                    transactionEntity: transaction,
-                  );
-                  context.read<HomeCubit>().loadHomeData();
-                },
+  context.read<HomeCubit>().loadHomeData();
+  context.read<HomeCubit>().changePage(0);
+},
+
+                
               ),
             ],
           ),

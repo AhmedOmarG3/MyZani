@@ -2,7 +2,7 @@ import 'package:myzani/features/transactions_management/domain/entities/category
 import 'package:myzani/features/transactions_management/presentation/views/add_transaction_view.dart';
 
 class TransactionEntity {
- 
+ final int id;
   final TransactionType type;
   final String title;
   final String description;
@@ -10,5 +10,5 @@ class TransactionEntity {
   final double amount;
   final DateTime date;
 
-  TransactionEntity({ required this.type, required this.title, required this.description, required this.category, required this.amount, required this.date});
+  TransactionEntity({ required this.type, required this.title, required this.description, required this.category, required this.amount, required this.date, required this.id});
 }

@@ -10,11 +10,17 @@ class GetTransactionCubit extends Cubit<GetTransactionState> {
     : super(GetTransactionInitial());
   final ManageTranasactionsRepo manageTranasactionsRepo;
 
-  Future<void> getTransaction(int id)async {
-    emit(TransactionIsEmpty());
-   var transactionEntity = manageTranasactionsRepo.getOneTransaction(id: id);
-    emit(TransactionLoaded(transactionEntity: transactionEntity));
-  }
+
+ Future<void> getTransaction(int id) async {
+  emit(TransactionIsEmpty());
+
+  final result = manageTranasactionsRepo.getOneTransaction(id: id);
+  
+  result.fold(
+    (failure) => emit(TransactionError(message: failure.message)),
+    (transaction) => emit(TransactionLoaded(transactionEntity: transaction)),
+  );
+}
 
     Future<void> getLastTransaction()async {
     emit(NoTransactionYetState());

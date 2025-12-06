@@ -8,7 +8,10 @@ abstract class ManageTranasactionsRepo {
     required TransactionEntity transactionEntity,
   });
    List<TransactionEntity> getAllTransactions();
-   TransactionEntity getOneTransaction({required int id});
+   Either<Failure,TransactionEntity> getOneTransaction({required int id});
    Either<Failure, TransactionEntity> getLastTransaction();
    HomeCardEntity getTotalIncomeAndExpenses();
+   void deleteTransaction({required int id});
+   int getNextTransactionId();
+   Either<Failure, void> updateTransaction({required TransactionEntity transactionEntity});
 }

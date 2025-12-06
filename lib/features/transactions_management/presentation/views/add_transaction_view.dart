@@ -1,8 +1,11 @@
+// add_transaction_view.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:myzani/core/theme/app_theme.dart';
 import 'package:myzani/core/widgets/custom_common_app_bar.dart';
 import 'package:myzani/core/widgets/more_dots_widget.dart';
+import 'package:myzani/features/transactions_management/domain/entities/transaction_entity.dart';
 import 'package:myzani/features/transactions_management/presentation/widgets/add_transaction_body.dart';
 
 class AddTransactionView extends StatelessWidget {
@@ -10,21 +13,34 @@ class AddTransactionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: AddTransactionViewBody());
+     final transactionEntity = GoRouter.of(context).state.extra as TransactionEntity?;
+    return Scaffold(
+      body: AddTransactionViewBody(
+        transactionEntity: transactionEntity,
+      ),
+    );
   }
 }
 
 enum TransactionType { expense, income }
 
 class AddTransactionViewBody extends StatefulWidget {
-  const AddTransactionViewBody({super.key});
+  const AddTransactionViewBody({super.key, this.transactionEntity});
+  final TransactionEntity? transactionEntity;
 
   @override
   State<AddTransactionViewBody> createState() => _AddTransactionViewState();
 }
 
 class _AddTransactionViewState extends State<AddTransactionViewBody> {
-  TransactionType selectedType = TransactionType.income;
+  late TransactionType selectedType;
+
+  @override
+  void initState() {
+    super.initState();
+    // لو فيه transaction حدد النوع بناءً عليه
+    selectedType = widget.transactionEntity?.type ?? TransactionType.income;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,23 +60,28 @@ class _AddTransactionViewState extends State<AddTransactionViewBody> {
           height: 1.sh * 0.35,
           child: CustomCommonAppBar(
             lastIcon: MoreDotsWidget(size: 35.sp),
-            title: selectedType == TransactionType.expense
-                ? 'Add Expense'
-                : 'Add Income',
+            title: widget.transactionEntity == null
+                ? (selectedType == TransactionType.expense
+                    ? 'Add Expense'
+                    : 'Add Income')
+                : 'Edit Transaction',
           ),
         ),
         Positioned(
           top: 180.h,
           left: 20.w,
           right: 20.w,
-          child: AddTransactionBody(
-            mainColor: mainColor,
-            selectedType: selectedType,
-            onTypeChanged: (type) {
-              setState(() {
-                selectedType = type;
-              });
-            },
+          bottom: 0,
+          child: SingleChildScrollView(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom + 20,
+            ),
+            child: AddTransactionBody(
+              mainColor: mainColor,
+              selectedType: selectedType,
+              onTypeChanged: (type) => setState(() => selectedType = type),
+              transactionEntity: widget.transactionEntity,
+            ),
           ),
         ),
       ],

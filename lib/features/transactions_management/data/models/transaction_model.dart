@@ -5,28 +5,30 @@ import 'package:myzani/features/transactions_management/domain/entities/transact
 import 'package:myzani/features/transactions_management/presentation/views/add_transaction_view.dart';
 
 part 'transaction_model.g.dart';
-
-@HiveType(typeId: 11)
 class TransactionModel extends HiveObject {
   @HiveField(0)
-  final TransactionTypeModel type;
+  final int id;
 
   @HiveField(1)
-  final String title;
+  final TransactionTypeModel type;
 
   @HiveField(2)
-  final String description;
+  final String title;
 
   @HiveField(3)
-  final CategoryModel category;
+  final String description;
 
   @HiveField(4)
-  final double amount;
+  final CategoryModel category;
 
   @HiveField(5)
+  final double amount;
+
+  @HiveField(6)
   final DateTime date;
 
   TransactionModel({
+    required this.id,
     required this.type,
     required this.title,
     required this.description,
@@ -35,8 +37,10 @@ class TransactionModel extends HiveObject {
     required this.date,
   });
 
+ 
   factory TransactionModel.fromEntity(TransactionEntity entity) {
     return TransactionModel(
+      id: entity.id,
       type: entity.type == TransactionType.income
           ? TransactionTypeModel.income
           : TransactionTypeModel.expense,
@@ -48,8 +52,10 @@ class TransactionModel extends HiveObject {
     );
   }
 
+
   TransactionEntity toEntity() {
     return TransactionEntity(
+      id: id,
       type: type == TransactionTypeModel.income
           ? TransactionType.income
           : TransactionType.expense,

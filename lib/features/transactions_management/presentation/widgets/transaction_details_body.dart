@@ -11,7 +11,6 @@ import 'package:myzani/features/transactions_management/presentation/widgets/tra
 
 class TransactionDetailsBody extends StatelessWidget {
   const TransactionDetailsBody({super.key, required this.transactionEntity});
-
   final TransactionEntity transactionEntity;
 
   @override
@@ -82,7 +81,9 @@ class TransactionDetailsBody extends StatelessWidget {
         SizedBox(height: 10.h),
         Divider(color: context.appTheme.greyColor, thickness: 1.w),
         SizedBox(height: 10),
-        ActionRow(),
+        ActionRow(
+          transactionEntity: transactionEntity,
+        ),
       ],
     );
   }

@@ -3,6 +3,7 @@ import 'package:myzani/features/auth/presentation/views/forget_password_view.dar
 import 'package:myzani/features/auth/presentation/views/login_view.dart';
 import 'package:myzani/features/auth/presentation/views/sign_up_view.dart';
 import 'package:myzani/features/home/presentation/views/home_view.dart';
+import 'package:myzani/features/transactions_management/domain/entities/transaction_entity.dart';
 import 'package:myzani/features/transactions_management/presentation/views/add_transaction_view.dart';
 import 'package:myzani/features/insights/presentation/views/insights_view.dart';
 import 'package:myzani/features/onboarding/presentation/views/onboarding_view.dart';
@@ -52,9 +53,12 @@ class AppRouter {
         builder: (context, state) => const HomeView(),
       ),
       GoRoute(
-        path: addTrasaction,
-        name: addTrasaction,
-        builder: (context, state) => const AddTransactionView(),
+        path: AppRouter.addTrasaction,
+        name: AppRouter.addTrasaction,
+        builder: (context, state) {
+          final transactionEntity = state.extra as TransactionEntity?;
+          return AddTransactionView();
+        },
       ),
 
       GoRoute(
