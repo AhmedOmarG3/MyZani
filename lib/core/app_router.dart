@@ -3,7 +3,7 @@ import 'package:myzani/features/auth/presentation/views/forget_password_view.dar
 import 'package:myzani/features/auth/presentation/views/login_view.dart';
 import 'package:myzani/features/auth/presentation/views/sign_up_view.dart';
 import 'package:myzani/features/home/presentation/views/home_view.dart';
-import 'package:myzani/features/add_transaction/presentation/views/add_transaction_view.dart';
+import 'package:myzani/features/transactions_management/presentation/views/add_transaction_view.dart';
 import 'package:myzani/features/insights/presentation/views/insights_view.dart';
 import 'package:myzani/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:myzani/features/onboarding/presentation/views/splash_view.dart';

@@ -4,12 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myzani/core/app_styles.dart';
 import 'package:myzani/core/settings/settings_cubit.dart';
 import 'package:myzani/core/theme/app_theme.dart';
+import 'package:myzani/features/home/domain/entities/home_card_entity.dart';
 import 'package:myzani/features/home/presentation/widgets/income_card_item.dart';
 import 'package:myzani/features/home/presentation/widgets/total_balance_row.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({super.key});
-
+  const CustomCard({super.key, required this.homeCardEntity});
+final HomeCardEntity homeCardEntity;
   @override
   Widget build(BuildContext context) {
     final theme = context.appTheme;
@@ -46,7 +47,7 @@ class CustomCard extends StatelessWidget {
               TotalBalanceRow(),
               SizedBox(height: 10.h),
               Text(
-                '$currencySymbol 2,548.00',
+                '$currencySymbol ${homeCardEntity.totalBalance}',
                 style: AppStyles.textStyle36Bold(
                   context,
                 ).copyWith(color: theme.secondaryColor, fontSize: 30.sp),
@@ -58,12 +59,12 @@ class CustomCard extends StatelessWidget {
                   IncomeCardItem(
                     icon: Icons.arrow_downward_rounded,
 
-                    amount: '$currencySymbol 1,840.00',
+                    amount: '$currencySymbol ${homeCardEntity.totalIncome}',
                     title: 'Income',
                   ),
                   IncomeCardItem(
                     icon: Icons.arrow_upward_rounded,
-                    amount: '$currencySymbol 2,548.00',
+                    amount: '$currencySymbol ${homeCardEntity.totalExpense}',
                     title: 'Expense',
                   ),
                 ],

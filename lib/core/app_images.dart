@@ -22,6 +22,10 @@ class AppImages {
   /// assets/images/download.svg
   static const String imagesDownload = "assets/images/download.svg";
 
+  /// Assets for imagesEntertainment
+  /// assets/images/entertainment.png
+  static const String imagesEntertainment = "assets/images/entertainment.png";
+
   /// Assets for imagesEye
   /// assets/images/eye.svg
   static const String imagesEye = "assets/images/eye.svg";
@@ -30,9 +34,17 @@ class AppImages {
   /// assets/images/facebook.svg
   static const String imagesFacebook = "assets/images/facebook.svg";
 
+  /// Assets for imagesFood
+  /// assets/images/food.png
+  static const String imagesFood = "assets/images/food.png";
+
   /// Assets for imagesForgetPassword
   /// assets/images/forget_password.svg
   static const String imagesForgetPassword = "assets/images/forget_password.svg";
+
+  /// Assets for imagesFreelance
+  /// assets/images/freelance.png
+  static const String imagesFreelance = "assets/images/freelance.png";
 
   /// Assets for imagesGoogle
   /// assets/images/google.svg
@@ -50,6 +62,10 @@ class AppImages {
   /// assets/images/insights.svg
   static const String imagesInsights = "assets/images/insights.svg";
 
+  /// Assets for imagesInvestment
+  /// assets/images/investment.png
+  static const String imagesInvestment = "assets/images/investment.png";
+
   /// Assets for imagesIphon
   /// assets/images/iphon.svg
   static const String imagesIphon = "assets/images/iphon.svg";
@@ -58,9 +74,17 @@ class AppImages {
   /// assets/images/logo.png
   static const String imagesLogo = "assets/images/logo.png";
 
+  /// Assets for imagesOther
+  /// assets/images/other.png
+  static const String imagesOther = "assets/images/other.png";
+
   /// Assets for imagesProfile
   /// assets/images/profile.svg
   static const String imagesProfile = "assets/images/profile.svg";
+
+  /// Assets for imagesShopping
+  /// assets/images/shopping.png
+  static const String imagesShopping = "assets/images/shopping.png";
 
   /// Assets for imagesSplashShape
   /// assets/images/splash_shape.svg
@@ -69,6 +93,14 @@ class AppImages {
   /// Assets for imagesTransaction
   /// assets/images/transaction.svg
   static const String imagesTransaction = "assets/images/transaction.svg";
+
+  /// Assets for imagesTransport
+  /// assets/images/transport.png
+  static const String imagesTransport = "assets/images/transport.png";
+
+  /// Assets for imagesVecteesalary
+  /// assets/images/vecteesalary.png
+  static const String imagesVecteesalary = "assets/images/vecteesalary.png";
 
   /// Assets for imagesYoutube
   /// assets/images/youtube.png

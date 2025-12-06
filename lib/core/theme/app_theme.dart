@@ -120,7 +120,7 @@ class AppLightTheme extends AppTheme {
   Color get incomeColor => const Color.fromARGB(255, 53, 125, 120);
 
   @override
-  Color get shadowColor => Colors.black.withOpacity(0.4);
+  Color get shadowColor => Colors.black.withOpacity(0.010);
 
   @override
   List<Color> get appBarGradientColors => [
